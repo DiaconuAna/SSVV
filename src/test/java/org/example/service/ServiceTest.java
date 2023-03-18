@@ -43,4 +43,13 @@ class ServiceTest {
             service.addStudent(new Student(null, "Test", 205, "test@email.com"));
         });
     }
+
+    @Test
+    public void testAddStudentIdEmpty(){
+        // Add a student with a null id - validation exception is thrown
+        Assertions.assertThrows(ValidationException.class, () -> {
+            service.addStudent(new Student("", "Test", 205, "test@email.com"));
+        });
+    }
+
 }
