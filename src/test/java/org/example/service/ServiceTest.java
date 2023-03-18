@@ -32,12 +32,12 @@ class ServiceTest {
         Assertions.assertNull(service.addStudent(new Student("123", "Test", 205, "test@email.com")));
 
         // Add already existing student -> student will be returned - duplicate id
-        Assertions.assertEquals("123" ,service.addStudent(new Student("123", "Test", 205, "test@email.com")).getID());
+        Assertions.assertEquals("123", service.addStudent(new Student("123", "Test", 205, "test@email.com")).getID());
         Assertions.assertNotNull(service.deleteStudent("123").getID());
     }
 
     @Test
-    public void testAddStudentIdNull(){
+    public void testAddStudentIdNull() {
         // Add a student with a null id - validation exception is thrown
         Assertions.assertThrows(ValidationException.class, () -> {
             service.addStudent(new Student(null, "Test", 205, "test@email.com"));
@@ -45,11 +45,29 @@ class ServiceTest {
     }
 
     @Test
-    public void testAddStudentIdEmpty(){
-        // Add a student with a null id - validation exception is thrown
+    public void testAddStudentIdEmpty() {
+        // Add a student with an empty id - validation exception is thrown
         Assertions.assertThrows(ValidationException.class, () -> {
             service.addStudent(new Student("", "Test", 205, "test@email.com"));
         });
     }
+
+    @Test
+    public void testAddStudentNameNull() {
+        // Add a student with an empty name - validation exception is thrown
+        Assertions.assertThrows(ValidationException.class, () -> {
+            service.addStudent(new Student("123", null, 205, "test@email.com"));
+        });
+    }
+
+    @Test
+    public void testAddStudentNameEmpty() {
+        // Add a student with an empty name - validation exception is thrown
+        Assertions.assertThrows(ValidationException.class, () -> {
+            service.addStudent(new Student("123", "", 205, "test@email.com"));
+        });
+    }
+
+
 
 }
