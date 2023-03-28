@@ -68,6 +68,36 @@ class ServiceTest {
         });
     }
 
+    @Test
+    public void testAddStudentEmailNull() {
+        // Add a student with a null email -> validation exception is thrown
+        Assertions.assertThrows(ValidationException.class, () -> {
+            service.addStudent(new Student("123", "Nume", 205, null));
+        });
+    }
 
+    @Test
+    public void testAddStudentEmailEmpty() {
+        // Add a student with an empty email -> validation exception is thrown
+        Assertions.assertThrows(ValidationException.class, () -> {
+            service.addStudent(new Student("123", "Nume", 205, ""));
+        });
+    }
+
+    @Test
+    public void testAddStudentEmailWrongFormat() {
+        // Add a student with an email that has a wrong format -> validation exception is thrown
+        Assertions.assertThrows(ValidationException.class, () -> {
+            service.addStudent(new Student("123", "Nume", 205, "email/t@test.com"));
+        });
+    }
+
+    @Test
+    public void testAddStudentGroupNegativeNo() {
+        // Add a student with a negative number for group -> validation exception is thrown
+        Assertions.assertThrows(ValidationException.class, () -> {
+            service.addStudent(new Student("123", "Nume", -10, "email@test.com"));
+        });
+    }
 
 }
