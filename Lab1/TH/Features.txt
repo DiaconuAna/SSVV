@@ -1,0 +1,22 @@
+----- Studenti -----
+1. Afisare lista studenti
+2. Cautare student
+3. Introducere student
+4. Modificare student
+5. Stergere student
+
+
+----- Teme -----
+1. Afisare lista teme
+2. Cautare tema
+3. Introducere tema
+4. Modificare tema
+5. Stergere tema
+6. Prelungire deadline
+
+----- Note -----
+
+1. Afisare lista note
+2. Cautare nota
+3. Introducere nota
+4. Stergere nota

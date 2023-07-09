@@ -1,0 +1,8 @@
+1. Add student
+2. Delete student
+3. Search student
+4. List student
+5. Add assignment
+6. Delete assignment
+7. Extend dealine
+8. Search assignment

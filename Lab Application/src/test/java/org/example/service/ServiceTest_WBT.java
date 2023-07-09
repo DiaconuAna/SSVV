@@ -43,6 +43,13 @@ class ServiceTest_WBT {
     }
 
     @Test
+    public void testAddAssignmentDescriptionNull() {
+        Assertions.assertThrows(ValidationException.class, () -> {
+            service.addTema(new Tema("A1", null, 8, 6));
+        });
+    }
+
+    @Test
     public void testAddAssignmentDeadline15() {
         Assertions.assertThrows(ValidationException.class, () -> {
             service.addTema(new Tema("A1", "Descrption1", 15, 5));
@@ -54,6 +61,16 @@ class ServiceTest_WBT {
         Assertions.assertThrows(ValidationException.class, () -> {
             service.addTema(new Tema("A1", "Descrption1", 7, 0));
         });
+    }
+
+    @Test
+    public void testAddAssignmentIdUnique() {
+        // Add successfully an assignment -> null will be returned - unique id
+        Assertions.assertNull(service.addTema(new Tema("A5", "Description", 6, 4)));
+
+        // Add already existing assignment -> assignment will be returned - duplicate id
+        Assertions.assertEquals("A5", service.addTema(new Tema("A5", "Description", 6, 4)).getID());
+        Assertions.assertNotNull(service.deleteTema("A5").getID());
     }
 
 }
